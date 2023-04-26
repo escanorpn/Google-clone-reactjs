@@ -32,10 +32,13 @@ const Center = ({hideBtns , fixed}) => {
               }
               <MicIcon className='icon'/>
             </div>
+    
+            
           <div className={hideBtns && 'hide'}>
             <div className='row2'>
                 <Button onClick={search} type='submit' variant='outlined'>Google Search</Button>
                 <Button variant='outlined'>I'm Feeling Lucky</Button>
+                
             </div>
           </div>
       </Content>

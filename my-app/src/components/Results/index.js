@@ -11,6 +11,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 const Results = () => {
 
     const { results, isLoading, getResults, searchTerm } = useResultContext();
+    // console.log("m results:", results)
     const location = useLocation();
 
     useEffect(()=>{
@@ -33,7 +34,8 @@ const Results = () => {
             return (
                 <>
                 <Wrapper>
-                    {results?.map(({ link,title,description }, index) => (
+                    {results?.map(({ link,title,snippet }, index) => (
+                      
                         <Content key={index} className='search-results'>
                             <a href={link} rel='norefferrer' target='_blank' >
                                 <p>
@@ -43,11 +45,35 @@ const Results = () => {
                                     {title}
                                 </p>
                             </a>
+                            {snippet !== null && (
                                 <p className='desc'>
-                                    {description.length > 150 ? description.substring(0,150)+'...' : description}
+                                    {/* {snippet.length > 150 ? snippet.substring(0,150)+'...' : snippet} */}
+                                {snippet}
                                 </p>
+                            )}
                         </Content>
                     ))}
+                     {/* <div>
+      {results?.map(obj => (
+        <Content  className='search-results'>
+        <a href={obj.link} rel='norefferrer' target='_blank' >
+            <p>
+                {obj.link.length > 30 ? obj.link.substring(0,35) : obj.link} &nbsp; <MoreVertIcon fontSize='small'/>
+            </p>
+            <p className='title' >
+                {obj.title}
+            </p>
+        </a>
+       
+             {obj.snippet !== null && (
+                  <p className='desc'>
+                  {obj.snippet}
+              </p>
+             )}
+          
+    </Content>
+      ))}
+    </div> */}
                 </Wrapper>
                 </>
             )
