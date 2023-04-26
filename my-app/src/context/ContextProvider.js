@@ -18,16 +18,25 @@ export const ResultContextProvider = ({children}) =>{
 const qIndex = url.indexOf("q="); // get the index of "q=" in the URL
 const ampersandIndex = url.indexOf("&", qIndex); // get the index of "&" after "q=" in the URL
 const qValue = url.substring(qIndex + 2, ampersandIndex); // extract the value of "q" from the URL
-console.log(qValue); 
+console.log(qValue);
+
+const substrings = type.split('/');
+const cType = substrings[1];
+let st=""
+if(cType=="images"){
+st="&searchType=image"
+}
+console.log(cType);
+
 // const prioritySite="mbbch.com"
 
         setIsLoading(true);
         // const query=   `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CONTEXT_KEY}&q=${qValue}&siteSearch=${DOMAIN}`;
-        const q="mbbch "+qValue;
-        if(qValue="mbbch.com"){
+        let q="mbbch "+qValue;
+        if(qValue=="mbbch.com"){
 q="mbbch.com";
         }
-        const query=   `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CONTEXT_KEY}&q=${q}&sortby=gd`;
+        const query= `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CONTEXT_KEY}&q=${q}&sortby=gd${st}`;
         console.log(query)
 
         const response = await fetch(query, {
@@ -53,8 +62,23 @@ q="mbbch.com";
   
 
         const data = await response.json();
+        const rItems=data.items;
+        // const fData = rItems.filter((item) => item.link.startsWith('https://mbbch.com/'));
+        const fData = rItems.sort((a, b) => {
+            if (a.link.startsWith('https://mbbch.com/') && !b.link.startsWith('https://mbbch.com/')) {
+              return -1;
+            } else if (!a.link.startsWith('https://mbbch.com/') && b.link.startsWith('https://mbbch.com/')) {
+              return 1;
+            } else {
+              return a.link.localeCompare(b.link);
+            }
+          });
+          
+       
+
         // const data=sortedResults;
-        console.log(data); 
+        console.log("data: "+rItems); 
+        console.log("fData: "+fData); 
         if(type.includes('/news')){
             // setResults(data.entries);
         }
@@ -63,7 +87,7 @@ q="mbbch.com";
         }
         else{
          
-            setResults(data.items);
+            setResults(fData);
         }
         setIsLoading(false);
     }
