@@ -19,8 +19,7 @@ const SearchPage = () => {
        <div className='white'>
         <div className='logo'>
             <Link to='/'>
-                <img src='https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg' alt='logo'/>
-            </Link>
+            <img src={require('../img/2.png')}alt='logo'/>  </Link>
         </div>
         <Navbar hide/>
         <Center hideBtns fixed />

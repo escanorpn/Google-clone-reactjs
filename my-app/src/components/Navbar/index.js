@@ -11,17 +11,18 @@ const Navbar = ({hide}) => {
       <Wrapper>
           <Content>
             {!hide && 
-              <><Link to='/gmail'>Gmail</Link>
+              <>
+              {/* <Link to='/gmail'>Gmail</Link> */}
               <Link to='/images'>Images</Link></>
             }
-            {hide && <SettingsIcon className='apps' />}
-            <AppsIcon className='apps' />
+            {/* {hide && <SettingsIcon className='apps' />} */}
+            {/* <AppsIcon className='apps' />
             <div className='avatar'>
                 <Avatar 
                     src=''
                     sx={{width: 34 , height: 34}}
                 />
-            </div>
+            </div> */}
           </Content>
       </Wrapper>
   )

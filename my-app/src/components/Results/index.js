@@ -11,7 +11,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 const Results = () => {
 
     const { results, isLoading, getResults, searchTerm } = useResultContext();
-    // console.log("m results:", results)
+    console.log("m results:", results)
     const location = useLocation();
 
     useEffect(()=>{
@@ -82,13 +82,17 @@ const Results = () => {
             return(
                 <Wrapper>
                     <div className='image' >
-                        { results.map(({ image , link:{ href,title } }, index)=>(
-                            <a href={href} key={index} target='_blank' rel='noreferrer'>
-                                <img src={image?.src} alt={title} loading='lazy'/>
+                        { results.map(({ image , link,title}, index)=>(
+                            <div>
+                            {image !== undefined && (
+                            <a href={image.contextLink} key={index} target='_blank' rel='noreferrer'>
+                                <img src={image.thumbnailLink} alt={title} loading='lazy'/>
                                 <p>
                                     {title}
                                 </p>
                             </a>
+                            )}
+                            </div>
                         ))}
                     </div>
                 </Wrapper>
