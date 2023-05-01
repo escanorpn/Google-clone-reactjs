@@ -12,7 +12,7 @@ const Navbar = ({hide}) => {
           <Content>
             {!hide && 
               <>
-              {/* <Link to='/gmail'>Gmail</Link> */}
+              <Link to='/'>1</Link>
               <Link to='/images'>Images</Link></>
             }
             {/* {hide && <SettingsIcon className='apps' />} */}

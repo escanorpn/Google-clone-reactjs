@@ -25,6 +25,8 @@ export const ResultContextProvider = ({children}) =>{
     let q="mbbch "+qValue;
     if(qValue=="mbbch.com"){
         q="mbbch.com";
+    }else if(qValue=="mbbch"){
+        q="mbbch.com";
     }
 
     const substrings = type.split('/');
