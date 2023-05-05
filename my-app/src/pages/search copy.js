@@ -16,17 +16,16 @@ const SearchPage = () => {
 
   return (
      <Wrapper style={{backgroundColor:"#E7EBF0",}}>
-       <div className='white' style={{backgroundColor:"#fff",paddingBottom:"3px",
-      paddingTop:"22px",zIndex:"3",}}>
+       <div className='white' style={{backgroundColor:"#fff",paddingBottom:"33px"}}>
         <div className='logo'>
             <Link to='/'>
             <img src={require('../img/2.png')}alt='logo'/>  </Link>
         </div>
         <Navbar hide/>
-        <Center hideBtns  />
+        <Center hideBtns fixed />
         {/* <Links/> */}
         </div>
-        <Results style={{marginTop:"300px",backgroundColor:"red"}}/>
+        <Results style={{marginTop:"333px"}}/>
      </Wrapper>
   )
 };

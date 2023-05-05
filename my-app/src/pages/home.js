@@ -8,7 +8,7 @@ export const Home = () => {
   document.title='MBBCH'
   return (
       <div style={{height:'70vh'}} >
-        <Navbar/>
+        {/* <Navbar/> */}
         <Logo/>
         <Center/>
       </div>
