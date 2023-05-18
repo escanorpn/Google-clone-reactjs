@@ -26,7 +26,7 @@ const Center = ({hideBtns , fixed}) => {
       <Content>
             <div className='row1' id={input && 'focus'}>
               <SearchIcon className='icon' onClick={search}/>
-              <input autoFocus value={input} onChange={(e)=>setInput(e.target.value)}/>
+              <input autoFocus value={input} onChange={(e)=>setInput(e.target.value)} style={{backgroundColor: "transparent",color: "#000"}}/>
               {input && 
                 <ClearIcon className='icon clear' onClick={(e)=>setInput('')}/>
               }

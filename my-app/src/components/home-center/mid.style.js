@@ -11,6 +11,7 @@ export const Content = styled.form`
         padding: 10px 15px;
         max-width: 38vw;
         margin: 0 auto;
+        background-color: white;
 
         input{
             flex: 1;
@@ -20,6 +21,8 @@ export const Content = styled.form`
             /* width: 32vw; */
             font-size: 1rem;
             min-width: 40px;
+            background-color:red;
+
         }
 
         .icon{

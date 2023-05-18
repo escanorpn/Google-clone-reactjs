@@ -36,16 +36,60 @@ const Results = () => {
         if(!Array.isArray(arr)) return;
         return arr[0].src;
      }
-    const { results, isLoading, getResults, searchTerm } = useResultContext();
-    // console.log("m results:",typeof results,first(results).pagemap.cse_thumbnail[0].src)
-    const pItems=  pData.map((a)=>{
-      
+    const { results,results1, isLoading, getResults, searchTerm } = useResultContext();
+    console.log("m results:",results)
+    // console.log("m results1:",JSON.stringify(results1))
+   
+   
+    let mItems="";
+    if(JSON.stringify(results1) !== "[]" && results1!=undefined){
+     mItems=  
+    results1.slice(0, 3).map((a)=>{
         return (
-        <Grid item xs="auto" style={{maxWidth:"95%"}}  >
-        <Item >
+            <>
+       
+        <Grid item xs="auto"  style={{maxWidth:"95%"}}  >
+            <Item >
+            <Card sx={{ maxWidth: 345 }} >
+            <CardActionArea>
+    
+            {a.pagemap!==undefined && first(a.pagemap.cse_thumbnail)!==undefined && (
+            <CardMedia
+            // style={{maxWidth:"200px"}}
+            component="img"
+            image=  {first(a.pagemap.cse_thumbnail)}
+            alt=  {a.title}
+            />)} 
+            <CardContent>
+            <Typography gutterBottom variant="h6" component="div">
+            <a href={a.link} rel='norefferrer' target='_blank' >
+            {a.title}
+            </a>
+            </Typography>
+            {a.snippet !== null && (
+            <Typography variant="body2" color="text.secondary">
+            {a.snippet}
+            </Typography>
+            )}
+            <a href={a.link} rel='norefferrer' target='_blank' >
+            </a>
+            </CardContent>
+            </CardActionArea>
+            </Card>
+            </Item>
+            </Grid>         
+    </>
+    )});
+            }
+
+   const pItems=  pData.map((a)=>{
+     
+       return (
+       <Grid item xs="auto" style={{maxWidth:"95%"}}  >
+       <Item >
 <Card sx={{ maxWidth: 295 }} >
 <CardActionArea>
-    
+   
 {a.url!==undefined && (
 <CardMedia
 
@@ -62,20 +106,21 @@ alt=  {a.Title}
 </Typography>
 {a.description !== null && (
 <Typography variant="body2" color="text.secondary">
-    {a.description}
+   {a.description}
 </Typography>
 )}
 <a href={a.link} rel='norefferrer' target='_blank' >
-         <p className='title' >
-            more
-         </p>
-     </a>
+        <p className='title' >
+           more
+        </p>
+    </a>
 </CardContent>
 </CardActionArea>
 </Card>
 </Item>
 </Grid>
-   )});
+  )});
+
    let listItems="nnn";
    if(JSON.stringify(results) == "[]" ){
 
@@ -102,7 +147,7 @@ alt=  {a.Title}
     </>
 }else{
     
-     listItems = results.slice(0, 3).map((a)=>{
+     listItems = results.map((a)=>{
         return (
             <>
        
@@ -111,7 +156,7 @@ alt=  {a.Title}
             <Card sx={{ maxWidth: 345 }} >
             <CardActionArea>
     
-            {first(a.pagemap.cse_thumbnail)!==undefined && (
+            {a.pagemap!==undefined && first(a.pagemap.cse_thumbnail)!==undefined && (
             <CardMedia
             // style={{maxWidth:"200px"}}
             component="img"
@@ -140,8 +185,9 @@ alt=  {a.Title}
     )});
     
 }
-  
-    const listItems1 = results.slice(3).map((a)=>{
+let listItems1="";
+if(JSON.stringify(results1) !== "[]" && results1!=undefined){
+     listItems1 = results1.slice(3).map((a)=>{
 
         return (
         <Grid item xs="auto" style={{maxWidth:"95%"}}  >
@@ -149,7 +195,7 @@ alt=  {a.Title}
         <Card sx={{ maxWidth: 345 }} >
 <CardActionArea >
     
-{first(a.pagemap.cse_thumbnail)!==undefined && (
+{a.pagemap!==undefined && first(a.pagemap.cse_thumbnail)!==undefined &&  (
 <CardMedia
 // style={{maxHeight:"200px"}}
 component="img"
@@ -182,7 +228,7 @@ alt=  {a.title}
 </Item>
 </Grid>
    )});
-  
+        }
     const location = useLocation();
 
     useEffect(()=>{
@@ -226,49 +272,26 @@ alt=  {a.title}
                     
                 </Wrapper> */}
           
-                <Box sx={{ flexGrow: 1 }} style={{backgroundColor:"#E7EBF0",width:"98%",maxWidth:"1200px",marginLeft:"auto",marginRight:"auto",marginTop:"95px",}}>
-                <Grid container spacing={{ xs: 1, md: 1 }} columns={{ xs: 4, sm: 8, md: 12 }} style={{marginLeft:"auto",marginRight:"auto"}} >
-                {/* */}
-                {/* {results?.map(({ link,title,snippet,pagemap }, index) => (
-                      
-                         <Grid item xs={2} sm={8} md={4} key={index} >
-                             <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
-      {first(pagemap.cse_thumbnail) !== null && (
-        <CardMedia
-          component="img"
-        //   height="140"
-          image=  {first(pagemap.cse_thumbnail)}
-          alt=  {title}
-        />)} 
-        <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
-          {title}
-          </Typography>
-          {snippet !== null && (
-          <Typography variant="body2" color="text.secondary">
-   {JSON.stringify(first(pagemap.cse_thumbnail))}
-          </Typography>
-              )}
-                 <a href={link} rel='norefferrer' target='_blank' >
-                              
-                              <p className='title' >
-                                 more
-                              </p>
-                          </a>
-        </CardContent>
-      </CardActionArea>
-    </Card>
-                    
-                         </Grid>
-                        
-                    
-                  ))} */}
-                  </Grid>
+                <Box sx={{ flexGrow: 1 }} style={{backgroundColor:"#E7EBF0",width:"99%",maxWidth:"1200px",marginLeft:"auto",marginRight:"auto",marginTop:"95px", zIndex: "3",position: "relative"}}>
+               
                   <Grid container spacing={1} style={{ alignItems: "flex-start",marginLeft:"auto",marginRight:"auto"}}>
-                  {listItems}
+            
+                  {JSON.stringify(results1) !== "[]" && (
+                        <>
+                       {mItems}
+                        </>
+                  )}
+                  {JSON.stringify(results) !== "[]" && (
+                        <>
                         {pItems}
                         {listItems1}
+                        </>
+                  )}
+                 
+                        {listItems}
+               
+                
+                       
                   
   {/* <Grid item xs="auto">
     <Item>variable width content</Item>
