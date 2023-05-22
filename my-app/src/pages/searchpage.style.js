@@ -12,10 +12,16 @@ export const Wrapper = styled.div`
         }
     }
 
-    @media screen and (max-width: 400px){
+    @media screen and (max-width: 700px){
+        .logo{
+            display: none;
+        }
+    }
+        @media screen and (max-width: 400px){
         .logo{
             margin-top: 15px;
             margin-left: 20px;
+            display: none;
         }
         .white{
             background-color: white;

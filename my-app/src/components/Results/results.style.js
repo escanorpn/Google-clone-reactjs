@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+.mCard{
+    max-width:200px;
+    display:none;
+
+}
         .search-results{
             display: flex;
             flex-wrap: wrap;

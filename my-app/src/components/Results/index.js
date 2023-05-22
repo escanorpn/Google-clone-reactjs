@@ -48,9 +48,9 @@ const Results = () => {
         return (
             <>
        
-        <Grid item xs="auto"  style={{maxWidth:"95%"}}  >
-            <Item >
-            <Card sx={{ maxWidth: 345 }} >
+        <Grid item xs={12} sm={6} md={4} lg={3} style={{maxWidth:"95%"}}  >
+            <Item  >
+            <Card className='mCard' >
             <CardActionArea>
     
             {a.pagemap!==undefined && first(a.pagemap.cse_thumbnail)!==undefined && (
@@ -85,7 +85,7 @@ const Results = () => {
    const pItems=  pData.map((a)=>{
      
        return (
-       <Grid item xs="auto" style={{maxWidth:"95%"}}  >
+       <Grid item xs={12} sm={6} md={4} lg={3} style={{maxWidth:"95%"}}  >
        <Item >
 <Card sx={{ maxWidth: 295 }} >
 <CardActionArea>
@@ -151,9 +151,9 @@ alt=  {a.Title}
         return (
             <>
        
-        <Grid item xs="auto"  style={{maxWidth:"95%"}}  >
+        <Grid item xs={12} sm={6} md={4} lg={3} style={{maxWidth:"95%"}}  >
             <Item >
-            <Card sx={{ maxWidth: 345 }} >
+            <Card className='mCard' >
             <CardActionArea>
     
             {a.pagemap!==undefined && first(a.pagemap.cse_thumbnail)!==undefined && (
@@ -190,9 +190,9 @@ if(JSON.stringify(results1) !== "[]" && results1!=undefined){
      listItems1 = results1.slice(3).map((a)=>{
 
         return (
-        <Grid item xs="auto" style={{maxWidth:"95%"}}  >
+        <Grid item xs={12} sm={6} md={4} lg={3}style={{maxWidth:"95%"}}  >
                 <Item >
-        <Card sx={{ maxWidth: 345 }} >
+        <Card className='mCard' >
 <CardActionArea >
     
 {a.pagemap!==undefined && first(a.pagemap.cse_thumbnail)!==undefined &&  (
@@ -272,7 +272,7 @@ alt=  {a.title}
                     
                 </Wrapper> */}
           
-                <Box sx={{ flexGrow: 1 }} style={{backgroundColor:"#E7EBF0",width:"99%",maxWidth:"1200px",marginLeft:"auto",marginRight:"auto",marginTop:"95px", zIndex: "3",position: "relative"}}>
+                <Box sx={{ flexGrow: 1 }} style={{backgroundColor:"#E7EBF0",maxWidth:"1200px",marginLeft:"auto",marginRight:"auto",marginTop:"80px", zIndex: "3",position: "relative"}}>
                
                   <Grid container spacing={1} style={{ alignItems: "flex-start",marginLeft:"auto",marginRight:"auto"}}>
             

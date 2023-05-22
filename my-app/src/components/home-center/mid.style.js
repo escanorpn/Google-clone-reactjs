@@ -9,7 +9,8 @@ export const Content = styled.form`
         border: rgba(211, 211, 211, 0.609) 1px solid;
         border-radius: 30px;
         padding: 10px 15px;
-        max-width: 38vw;
+        // max-width: 70vw;
+        max-width: 370px;
         margin: 0 auto;
         background-color: white;
 
@@ -82,7 +83,7 @@ export const Content = styled.form`
             right: 10px;
             max-width: 100%;
             margin: 0px 20px;
-            margin-top: 45px;
+            margin-top: -12px;
             background-color: white;
             input{
                 width: 50vw;

@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
 
-    margin-top: 26vh;
+    // margin-top: 26vh;
     margin-bottom: 25px;
     img{
         width: 272px;
         height: 92px;
+        margin-top: 26vh;
     }
     .logo{
         display: flex;
