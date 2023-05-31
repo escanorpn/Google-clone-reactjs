@@ -1,21 +1,27 @@
 [
   {
-    "Title": "Advert",
-    "description": "Promotional message",
-    "url": "https://blog.udemy.com/wp-content/uploads/2014/05/bigstock-Vector-Promotion-Concept-Fla-57726575.jpg",
-    "link": "https://example.com/item1"
+    "Title": "Blausen",
+    "description": "",
+    "url": "../../img/blausen.jpg",
+    "link": "https://www.amazon.com/dp/0578389045"
   },
   {
-    "Title": "Advert",
-    "description": "Promotional message",
-    "url": "https://blog.udemy.com/wp-content/uploads/2014/05/bigstock-Vector-Promotion-Concept-Fla-57726575.jpg",
-    "link": "https://example.com/item1"
+    "Title": "Logo",
+    "description": "",
+    "url": "../../img/banner.jpg",
+    "link": "https://www.leadnicely.com/logo-questionnaire/"
   },
   {
-    "Title": "Advert",
-    "description": "Promotional message",
-    "url": "https://blog.udemy.com/wp-content/uploads/2014/05/bigstock-Vector-Promotion-Concept-Fla-57726575.jpg",
-    "link": "https://example.com/item1"
+    "Title": "Siteground",
+    "description": "",
+    "url": "../../img/siteground.jpg",
+    "link": "https://siteground.com/web-hosting.htm?afimagecode=5e9f001b10f773e5af881b6bb8e5993c"
+  },
+  {
+    "Title": "Pandemic story",
+    "description": "",
+    "url": "../../img/youtube.jpg",
+    "link": "https://www.youtube.com/watch?v=hQsS7rStdzA"
   }
    
   ]

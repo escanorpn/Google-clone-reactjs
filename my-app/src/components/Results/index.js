@@ -19,7 +19,43 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-import pData from "../../data/data.json"
+// import pData from "../../data/data.json";
+
+import blausenImage from '../../img/blausen.jpg';
+import logoImage from '../../img/banner.jpg';
+import sitegroundImage from '../../img/siteground.jpg';
+import pandemicImage from '../../img/youtube.jpg';
+
+import Avatar from '@mui/material/Avatar';
+
+const pData = [
+   
+    {
+      Title: "Logo",
+      description: "",
+      url: logoImage,
+      link: "https://www.leadnicely.com/logo-questionnaire/"
+    },
+    {
+      Title: "Siteground",
+      description: "",
+      url: sitegroundImage,
+      link: "https://siteground.com/web-hosting.htm?afimagecode=5e9f001b10f773e5af881b6bb8e5993c"
+    },
+    {
+        Title: "Blausen",
+        description: "",
+        url: blausenImage,
+        link: "https://www.amazon.com/dp/0578389045"
+      },
+    {
+      Title: "Pandemic story",
+      description: "",
+      url: pandemicImage,
+      link: "https://www.youtube.com/watch?v=hQsS7rStdzA"
+    }
+  ];
+
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff0',
@@ -36,9 +72,17 @@ const Results = () => {
         if(!Array.isArray(arr)) return;
         return arr[0].src;
      }
+     const  pfirst=(arr) =>{
+         if(!Array.isArray(arr)) return;
+         return arr[0].image;
+      }
+      const  afirst=(arr) =>{
+          if(!Array.isArray(arr)) return;
+          return arr[0];
+       }
     const { results,results1, isLoading, getResults, searchTerm } = useResultContext();
-    console.log("m results:",results)
-    // console.log("m results1:",JSON.stringify(results1))
+    // console.log("m results:",results)
+    console.log("m results1:",JSON.stringify(results1))
    
    
     let mItems="";
@@ -71,8 +115,23 @@ const Results = () => {
             {a.snippet}
             </Typography>
             )}
-            <a href={a.link} rel='norefferrer' target='_blank' >
-            </a>
+           
+             {a.pagemap!==undefined && a.pagemap.person!==undefined && pfirst(a.pagemap.person)!==undefined  && (
+                <>
+                        <Avatar
+            src={pfirst(a.pagemap.person)}
+            style={{marginBottom:"-32px",marginTop:"12px"}}
+            />
+            </>
+            )}
+            {a.pagemap!==undefined && a.pagemap.person!==undefined && afirst(a.pagemap.metatags)!==undefined  && (
+                            <>
+            <Typography variant="body2" color="text.secondary">
+                    <b>{afirst(a.pagemap.metatags).author}</b> 
+                        </Typography>
+            </>
+            )}
+
             </CardContent>
             </CardActionArea>
             </Card>
@@ -82,41 +141,45 @@ const Results = () => {
     )});
             }
 
-   const pItems=  pData.map((a)=>{
+   const pItems=  pData.map((a,index)=>{
      
        return (
-       <Grid item xs={12} sm={6} md={4} lg={3} style={{maxWidth:"95%"}}  >
+       <Grid item xs={12} sm={6} md={4} lg={3} style={{maxWidth:"95%"}} key={index} >
        <Item >
+       <a href={a.link} rel='norefferrer' target='_blank' >
 <Card sx={{ maxWidth: 295 }} >
 <CardActionArea>
    
 {a.url!==undefined && (
+    
 <CardMedia
 
 component="img"
 //   height="140"
-image=  {a.url}
+image= {a.url}
 alt=  {a.Title}
 />)} 
+{/* <img src={a.url} alt={a.Title} /> */}
 <CardContent>
-<Typography gutterBottom variant="h6" component="div">
+{/* <Typography gutterBottom variant="h6" component="div">
 <a href={a.link} rel='norefferrer' target='_blank' >
 {a.Title}
 </a>
-</Typography>
-{a.description !== null && (
+</Typography> */}
+{/* {a.description !== null && (
 <Typography variant="body2" color="text.secondary">
    {a.description}
 </Typography>
-)}
-<a href={a.link} rel='norefferrer' target='_blank' >
+)} */}
+{/* <a href={a.link} rel='norefferrer' target='_blank' >
         <p className='title' >
            more
         </p>
-    </a>
+    </a> */}
 </CardContent>
 </CardActionArea>
 </Card>
+</a>
 </Item>
 </Grid>
   )});
@@ -176,6 +239,21 @@ alt=  {a.Title}
             )}
             <a href={a.link} rel='norefferrer' target='_blank' >
             </a>
+            {a.pagemap!==undefined && a.pagemap.person!==undefined && pfirst(a.pagemap.person)!==undefined  && (
+                <>
+                        <Avatar
+            src={pfirst(a.pagemap.person)}
+            style={{marginBottom:"-32px",marginTop:"12px"}}
+            />
+            </>
+            )}
+            {a.pagemap!==undefined && a.pagemap.person!==undefined && afirst(a.pagemap.metatags)!==undefined  && (
+                            <>
+            <Typography variant="body2" color="text.secondary">
+                    <b>{afirst(a.pagemap.metatags).author}</b> 
+                        </Typography>
+            </>
+            )}
             </CardContent>
             </CardActionArea>
             </Card>
@@ -216,12 +294,21 @@ alt=  {a.title}
 {/* {JSON.stringify(first(pagemap.cse_thumbnail))} */}
 </Typography>
 )}
-<a href={a.link} rel='norefferrer' target='_blank' >
-         
-         {/* <p className='title' >
-            more
-         </p> */}
-     </a>
+     {a.pagemap!==undefined && a.pagemap.person!==undefined && pfirst(a.pagemap.person)!==undefined  && (
+                <>
+                        <Avatar
+            src={pfirst(a.pagemap.person)}
+            style={{marginBottom:"-32px",marginTop:"12px"}}
+            />
+            </>
+            )}
+            {a.pagemap!==undefined && a.pagemap.person!==undefined && afirst(a.pagemap.metatags)!==undefined  && (
+                            <>
+            <Typography variant="body2" color="text.secondary">
+                    <b>{afirst(a.pagemap.metatags).author}</b> 
+                        </Typography>
+            </>
+            )}
 </CardContent>
 </CardActionArea>
 </Card>
